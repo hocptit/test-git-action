@@ -1,13 +1,12 @@
 name: Hello World Action
 description: Prints "Hello World" or "Hello" + the name of a person to greet to the log.
-inputs:
-  version:
-    description: The version of Node.js to use.
-    default: 16
+outputs:
+  random-number:
+    description: "Random number"
+    value: ${{ steps.random-number-generator.outputs.random-id }}
 runs:
-  using: node16
+  using: "composite"
   steps:
-  - uses: actions/checkout@v3
-  - run: echo "Hello World"
-  - if: inputs.version != ""
-    run: echo "Hello ${{ inputs.version }}"
+    - id: random-number-generator
+      run: echo "random-id=$(echo $RANDOM)" >> $GITHUB_OUTPUT
+      shell: bash
