@@ -1,0 +1,13 @@
+name: Hello World Action
+description: Prints "Hello World" or "Hello" + the name of a person to greet to the log.
+inputs:
+  version:
+    description: The version of Node.js to use.
+    default: 16
+runs:
+  using: node16
+  steps:
+  - uses: actions/checkout@v3
+  - run: echo "Hello World"
+  - if: inputs.version != ""
+    run: echo "Hello ${{ inputs.version }}"
