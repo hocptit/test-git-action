@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 const Sum = require('./utils');
 const app = express();
 const port = 3001;
-console.log(Sum(102, 106));
 const mongoUri = process.env.mongoUri || 'mongodb://admin:admin@localhost:27017/admin'
 mongoose.connect(mongoUri, {
   useNewUrlParser: true,
