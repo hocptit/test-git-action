@@ -19,7 +19,7 @@ jobs:
         with:
           name: output-log-file
           path: output.log
-      - run: echo "Action"
+      - run: echo ${{vars.TEST_VAR}}
       - run: node -v
       - run: docker --version
       - run: java --version
