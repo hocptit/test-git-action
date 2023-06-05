@@ -1,0 +1,41 @@
+name: Build and Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      deploy:
+        description: 'Deploy the Docker image'
+        required: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Build Docker image
+        run: echo "OK"
+
+      - name: Check if build was successful
+        run: |
+          if [ $? -eq 0 ]; then
+            echo "::set-output name=build_status::success"
+          else
+            echo "::set-output name=build_status::failure"
+          fi
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.event.inputs.deploy == 'true' && needs.build.outputs.build_status == 'success'
+
+    steps:
+      - name: Deploy using Docker
+        run: echo "Done"
