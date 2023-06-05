@@ -8,12 +8,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: build
-        run: |
-          echo 'building'
-          echo "KEY1=${{secrets.SC_KEY_1}}" >> .env
-          echo "KEY2=${{secrets.SC_KEY_2}}" >> .env
-          ls
-          cat .env
+        run: echo 'building'
+      - name: build2
+        run: echo "KEY1=${{secrets.SC_KEY_1}}" >> .env
+      - name: build3
+        run: echo "KEY2=${{secrets.SC_KEY_2}}" >> .env
+      - name: build4
+        run: ls
+      - name: build5
+        run: cat .env
   publish:
     needs: [build]
     runs-on: ubuntu-latest
