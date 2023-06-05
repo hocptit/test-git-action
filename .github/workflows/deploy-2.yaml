@@ -17,6 +17,8 @@ jobs:
         run: ls
       - name: build5
         run: cat .env
+      - name: To File all
+        run: echo "${{ secrets.ENV_ALL }}" >> .env_all
   publish:
     needs: [build]
     runs-on: ubuntu-latest
