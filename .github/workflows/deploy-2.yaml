@@ -10,8 +10,9 @@ jobs:
       - name: build
         run: |
           echo 'building'
-          echo "{KEY1}=${{secrets.SC_KEY_1}}" >> ".env"
-          echo "{KEY2}=${{secrets.SC_KEY_2}}" >> ".env"
+          echo "KEY1=${{secrets.SC_KEY_1}}" >> .env
+          echo "KEY2=${{secrets.SC_KEY_2}}" >> .env
+          ls
           cat .env
   publish:
     needs: [build]
