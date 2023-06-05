@@ -1,11 +1,9 @@
 name: Build and Deploy
 
 on:
-  workflow_dispatch:
-    inputs:
-      deploy:
-        description: 'Deploy the Docker image'
-        required: false
+  push:
+    branches:
+      - main
 
 jobs:
   build:
@@ -24,18 +22,14 @@ jobs:
         run: echo "OK"
 
       - name: Check if build was successful
-        run: |
-          if [ $? -eq 0 ]; then
-            echo "::set-output name=build_status::success"
-          else
-            echo "::set-output name=build_status::failure"
-          fi
+        id: build_status
+        run: echo "::set-output name=status::success"
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    if: github.event.inputs.deploy == 'true' && needs.build.outputs.build_status == 'success'
+    if: github.ref == 'refs/heads/main' && needs.build.outputs.status == 'success'
 
     steps:
       - name: Deploy using Docker
-        run: echo "Done"
+        run: echo "Deployed"
