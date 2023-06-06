@@ -1,30 +1,26 @@
+name: Reusable workflow
+
 on:
   workflow_call:
-    inputs:
-      config-path:
-        required: true
-        type: string
-    secrets:
-      envPAT:
-        required: true
-env:
-  test_env: OkOKTestEnv
-  super_duper_var: totally_awesome
-jobs:
-  reusable_workflow_job:
-    runs-on: ubuntu-latest
-    environment: production
-    steps:
-    - uses: actions/checkout@v3
-    - uses: actions/labeler@v4
-      with:
-        repo-token: ${{ secrets.envPAT }}
-        configuration-path: ${{ inputs.config-path }}
-    - name: step_reusable_workflow_job
-      id: step_reusable_workflow_job
-      run:  echo "test_key=Data_of_test_key" >> $GITHUB_OUTPUT
-
-    - name: step 
-      run: echo 'YOLOFCC'
+    # Map the workflow outputs to job outputs
     outputs:
-        test_key: 'OKOKOKOKOKOKOKOK'
+      firstword:
+        description: "The first output string"
+        value: ${{ jobs.example_job.outputs.output1 }}
+      secondword:
+        description: "The second output string"
+        value: ${{ jobs.example_job.outputs.output2 }}
+
+jobs:
+  example_job:
+    name: Generate output
+    runs-on: ubuntu-latest
+    # Map the job outputs to step outputs
+    outputs:
+      output1: ${{ steps.step1.outputs.firstword }}
+      output2: ${{ steps.step2.outputs.secondword }}
+    steps:
+      - id: step1
+        run: echo "firstword=hello" >> $GITHUB_OUTPUT
+      - id: step2
+        run: echo "secondword=world" >> $GITHUB_OUTPUT
