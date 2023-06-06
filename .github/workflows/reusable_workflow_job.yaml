@@ -20,6 +20,8 @@ jobs:
       output1: ${{ steps.step1.outputs.firstword }}
       output2: ${{ steps.step2.outputs.secondword }}
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
       - id: step1
         run: |
           echo "firstword=$(git rev-parse --short=9 HEAD)" >> $GITHUB_OUTPUT
