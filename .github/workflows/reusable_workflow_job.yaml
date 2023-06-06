@@ -25,3 +25,5 @@ jobs:
 
     - name: step 
       run: echo 'YOLOFCC'
+    outputs:
+        testKey: ${{steps.step_reusable_workflow_job.outputs.testKey}}
