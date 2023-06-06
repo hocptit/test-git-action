@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Read data in reusable_workflow_job
-        run: echo ${{needs.call-workflow-passing-data.outputs.testKey}}
+        run: echo ${{needs.reusable_workflow_job.testKey}}
       - name: build2
         run: echo "KEY1=${{secrets.SC_KEY_1}}" >> .env
       - name: build3
