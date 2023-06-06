@@ -17,4 +17,4 @@ jobs:
         repo-token: ${{ secrets.envPAT }}
         configuration-path: ${{ inputs.config-path }}
     - name: step reusable_workflow_job
-      run: echo 'This is that, ok hihi you'
+      run: echo 'This is that, ok hihi you' >> test.txt
