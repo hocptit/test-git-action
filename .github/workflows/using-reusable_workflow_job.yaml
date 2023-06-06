@@ -5,7 +5,7 @@ on:
 
 jobs:
   call-workflow-passing-data:
-    uses: octo-org/example-repo/.github/workflows/reusable-workflow.yml@main
+    uses: hocptit/test-git-action/.github/workflows/reusable_workflow_job.yaml@main
     with:
       config-path: .github/labeler.yml
     secrets:
