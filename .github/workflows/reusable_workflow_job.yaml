@@ -20,7 +20,8 @@ jobs:
       with:
         repo-token: ${{ secrets.envPAT }}
         configuration-path: ${{ inputs.config-path }}
-    - name: step reusable_workflow_job
-      run: echo 'This is that, ok hihi you' >> test.txt
+    - name: step_reusable_workflow_job
+      run: echo "testKey=value" >> $GITHUB_OUTPUT
+
     - name: step 
       run: echo 'YOLOFCC'
