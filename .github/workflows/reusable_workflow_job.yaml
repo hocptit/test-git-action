@@ -22,7 +22,6 @@ jobs:
     steps:
       - id: step1
         run: |
-          echo "$(grep version package.json | cut -f 4 -d\")-$(git rev-parse --short=9 HEAD)"
           echo "firstword=$(git rev-parse --short=9 HEAD)" >> $GITHUB_OUTPUT
       - id: step2
         run: echo "secondword=world" >> $GITHUB_OUTPUT
