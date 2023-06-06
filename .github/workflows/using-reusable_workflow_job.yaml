@@ -11,9 +11,9 @@ jobs:
     secrets:
       envPAT: "OKOK"
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest resuse workflow
     steps:
-      - name: build
+      - name: Read data in reusable_workflow_job
         run: echo test.txt
       - name: build2
         run: echo "KEY1=${{secrets.SC_KEY_1}}" >> .env
