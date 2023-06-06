@@ -21,6 +21,7 @@ jobs:
         repo-token: ${{ secrets.envPAT }}
         configuration-path: ${{ inputs.config-path }}
     - name: step_reusable_workflow_job
+      id: step_reusable_workflow_job
       run:  echo "test_key=Data_of_test_key" >> $GITHUB_OUTPUT
 
     - name: step 
