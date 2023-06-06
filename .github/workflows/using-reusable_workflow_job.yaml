@@ -11,7 +11,7 @@ jobs:
     secrets:
       envPAT: "OKOK"
   build:
-    runs-on: ubuntu-latest resuse workflow
+    runs-on: ubuntu-latest
     steps:
       - name: Read data in reusable_workflow_job
         run: echo test.txt
