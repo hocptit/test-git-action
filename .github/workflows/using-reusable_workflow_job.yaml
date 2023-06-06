@@ -1,0 +1,27 @@
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  call-workflow-passing-data:
+    uses: octo-org/example-repo/.github/workflows/reusable-workflow.yml@main
+    with:
+      config-path: .github/labeler.yml
+    secrets:
+      envPAT: "OKOK"
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: build
+        run: echo 'building'
+      - name: build2
+        run: echo "KEY1=${{secrets.SC_KEY_1}}" >> .env
+      - name: build3
+        run: echo "KEY2=${{secrets.SC_KEY_2}}" >> .env
+      - name: build4
+        run: ls
+      - name: build5
+        run: cat .env
+      - name: To File all
+        run: echo "${{ secrets.ENV_ALL }}" >> .env_all
