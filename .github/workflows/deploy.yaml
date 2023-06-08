@@ -33,5 +33,12 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 14
-      - name: Deploy using Docker
+      - name: Setup Java JDK
+        uses: actions/setup-java@v1.4.4
+        with:
+          java-version: 
+            12
+      - name: Node ver
         run: node -v
+      - name: Node ver
+        run: java --version
