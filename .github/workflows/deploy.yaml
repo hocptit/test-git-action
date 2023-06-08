@@ -40,5 +40,7 @@ jobs:
             12
       - name: Node ver
         run: node -v
-      - name: Node ver
+      - name: Java ver
         run: java --version
+      - name: Docker
+        run: docker ps
