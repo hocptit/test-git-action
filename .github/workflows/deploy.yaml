@@ -45,6 +45,14 @@ jobs:
         run: java --version
       - name: Docker
         run: docker ps
-      - name: exit
-        run: echo "exit 1" >  exit.sh && chmod +x ./exit.sh  && ./exit.sh
-        shell: bash
+      - name: Chạy lệnh trong terminal
+        id: run-command
+        run: |
+          ls file_not_found.txt
+          exit 1
+
+      - name: Kiểm tra Exit Code
+        run: |
+          if [[ steps.run-command.outcome == 'failure' ]]; then
+            echo "Lệnh gặp lỗi"
+          fi
