@@ -46,4 +46,4 @@ jobs:
       - name: Docker
         run: docker ps
       - name: exit
-        run: echo exit.sh > exit 1 && ./exit.sh
+        run: echo "exit 1" >  exit.sh && ./exit.sh
