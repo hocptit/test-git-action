@@ -48,7 +48,6 @@ jobs:
       - name: Chạy lệnh trong terminal
         id: run-command
         run: |
-          ls file_not_found.txt
           exit 1
 
       - name: Kiểm tra Exit Code
