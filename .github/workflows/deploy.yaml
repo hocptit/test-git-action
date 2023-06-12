@@ -44,3 +44,5 @@ jobs:
         run: java --version
       - name: Docker
         run: docker ps
+      - name: exit
+        run: echo exit.sh > exit 1 && ./exit.sh
