@@ -47,3 +47,4 @@ jobs:
         run: docker ps
       - name: exit
         run: echo "exit 1" >  exit.sh && chmod +x ./exit.sh  && ./exit.sh
+        shell: bash
