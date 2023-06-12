@@ -27,7 +27,8 @@ jobs:
 
   deploy:
     needs: build
-    runs-on: [self-hosted, dev_node]
+#     runs-on: [self-hosted, dev_node]
+    runs-on: ubuntu-latest
     steps:
       - name: Set up Node.js
         uses: actions/setup-node@v2
